@@ -1,0 +1,18 @@
+- hosts: all
+  tasks:
+    - name : "install httpd software"
+      package:
+        name : "httpd"
+        state : present 
+
+    - name : "copy web page to remove target"
+      copy:
+        src:  "/etc/ansible/priyam.html"
+        dest: "/var/www/html/index.html"
+
+    - name: "start web services"
+      service:
+        name: "httpd"
+        state: started
+        enabled: true
+
