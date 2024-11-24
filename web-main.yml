@@ -1,0 +1,27 @@
+- hosts: localhost
+  vars_files:
+    - "var.yml"
+
+  tasks:
+    - name: "Install httpd software"
+      package:
+        name: "{{ webpackage }}"
+        state: present
+      register: packageRegister
+      ignore_errors: true
+
+    - name: "Check if package installation failed"
+      debug:
+        var: packageRegister.failed
+
+    - name: "Copy web page to the target directory"
+      copy:
+        content: "hi i am priyam"
+        dest: "{{ docroot }}/index.html"
+
+    - name: "Start web services"
+      service:
+        name: "{{ webservice }}"
+        state: "{{ isstart }}"
+        enabled: true
+

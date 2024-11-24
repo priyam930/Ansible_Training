@@ -1,0 +1,9 @@
+- hosts: localhost
+  vars:
+    x: 5
+    myname: "priyam"
+  tasks:
+    - name: Print the value of x
+      debug:
+        msg: "My name is {{ myname }} and The value of x is {{ x }}"
+

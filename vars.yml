@@ -1,0 +1,17 @@
+- hosts: all
+  vars: 
+    x: 5
+  tasks:
+  - file:
+      path: "/root/myfile/"
+      state: directory
+  
+  - copy:
+      dest: "/root/myfile/lw.txt"
+      content: "hi this side priyam\n"
+
+  - debug:
+       msg: "value of x is {{ x }}"
+  - debug:
+       msg: "{{ ansible_facts.os_family }}"
+
