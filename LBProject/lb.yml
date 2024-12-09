@@ -1,0 +1,9 @@
+- hosts: myweb
+  become: true
+  roles:
+  - role: webrole
+
+- hosts: myLB
+  become: true
+  roles:
+  - role: lbrole

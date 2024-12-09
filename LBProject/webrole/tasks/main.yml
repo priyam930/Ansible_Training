@@ -1,0 +1,19 @@
+---
+# tasks file for myweb
+#
+#
+- name: "install web server package"
+  package:
+    name: "httpd"
+    state: present
+
+- name: " copy web page"
+  copy:
+    content: "hi Welcome to LBPage {{ ansible_nodename }}"
+    dest: "/var/www/html/index.html"
+
+- name: "start service"
+  service:
+    name: "httpd"
+    state: started
+
